@@ -1,0 +1,135 @@
+.ot-container {
+  .ot-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      text-align: center;
+      font-size: 32px;
+      color: #004898;
+      line-height: 32px;
+      font-weight: 700;
+      padding: 30px 0;
+    }
+  }
+
+  .ot-list {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .ot-item {
+      margin: 0;
+      padding: 0 0 37px 0;
+      display: inline-block;
+      width: 48%;
+      text-align: center;
+      color: #282828;
+      background: #fff url("../../../assets/images/border.png") no-repeat center
+        bottom;
+      box-shadow: 0px 0px 14px rgb(0, 0, 0 / 35%);
+
+      .technology-title {
+        text-decoration: none;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+        }
+
+        h3 {
+          font-size: 36px;
+          line-height: 42px;
+          font-weight: 300;
+          color: #000;
+          display: block;
+          margin: 30px 0 0 0;
+          padding: 0 5%;
+          border: 0;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 300;
+        color: #282828;
+        display: block;
+        margin: 10px 0 40px 0;
+        padding: 0 5%;
+
+        .technology-border {
+          color: #005776;
+          font-size: 18px;
+          line-height: 30px;
+          font-weight: bold;
+          margin: 0 30px 0 0;
+          text-decoration: none;
+          display: inline-block;
+          background: url("../../../assets/images/icon_arrow.png") no-repeat
+            right center;
+          padding: 0 40px 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .ot-container {
+    .ot-title {
+      span {
+        font-size: 24px !important;
+      }
+    }
+
+    .ot-list {
+      width: 1024px !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ot-container {
+    .ot-title {
+      span {
+        font-size: 20px !important;
+      }
+    }
+
+    .ot-list {
+      max-width: 768px !important;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .ot-container {
+    .ot-title {
+      span {
+        font-size: 16px !important;
+      }
+    }
+
+    .ot-list {
+      max-width: 450px !important;
+      // width: 100% !important;
+
+      .ot-item {
+        width: 100% !important;
+        max-width: 450px !important;
+        margin-bottom: 20px !important;
+      }
+    }
+  }
+}
