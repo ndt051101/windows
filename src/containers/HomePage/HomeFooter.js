@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Mapbox from "./Section/Mapbox";
 import "./HomeFooter.scss";
-// import { FormattedMessage } from "react-intl";
 import { getAllProduct } from "../../services/userService";
 import { postCustomerBookAppointment } from "../../services/userService";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-const HomeFooter = (props) => {
+const HomeFooter = () => {
     const [arrProduct, setArrProduct] = useState([]);
     const [state, setState] = useState("");
     useEffect(() => {

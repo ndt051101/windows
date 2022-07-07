@@ -6,49 +6,52 @@ import { adminMenu } from "./menuApp";
 import { FormattedMessage } from "react-intl";
 import "./Header.scss";
 import logo from "../../assets/images/logo.png";
-import { LANGUAGES, USER_ROLE } from "../../utils/constant";
+import { USER_ROLE } from "../../utils/constant";
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menuApp: [],
-    };
-  }
-
-  handleChangeLanguage = (language) => {
-    this.props.changeLanguage(language);
-  };
-
-  componentDidMount() {
-    const { userInfo } = this.props;
-    let menu = [];
-    if (userInfo) {
-      const role = userInfo.roleId;
-      if (role === USER_ROLE.ADMIN) {
-        menu = adminMenu;
-      }
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuApp: [],
+        };
     }
-    this.setState({
-      menuApp: menu,
-    });
-  }
-  render() {
-    const { processLogout, userInfo, language } = this.props;
-    return (
-      <div className="header-container">
-        <div className="logo">
-          <img src={logo} alt="logo"/>
-        </div>
-        <div className="header-tabs-container">
-          <Navigator menus={this.state.menuApp} />
-        </div>
 
-        <div className="language">
-          <span className="welcome">
-            <FormattedMessage id="homeheader.welcome" />
-            {userInfo && userInfo.firstName ? userInfo.firstName : ""} !
-          </span>
-          <span
+    // handleChangeLanguage = (language) => {
+    //     this.props.changeLanguage(language);
+    // };
+
+    componentDidMount() {
+        const { userInfo } = this.props;
+        let menu = [];
+        if (userInfo) {
+            const role = userInfo.roleId;
+            if (role === USER_ROLE.ADMIN) {
+                menu = adminMenu;
+            }
+        }
+        this.setState({
+            menuApp: menu,
+        });
+    }
+    render() {
+        const { processLogout, userInfo } = this.props;
+        return (
+            <div className="header-container">
+                <div className="logo">
+                    <img src={logo} alt="logo" />
+                </div>
+                <div className="header-tabs-container">
+                    <Navigator menus={this.state.menuApp} />
+                </div>
+
+                <div className="language">
+                    <span className="welcome">
+                        <FormattedMessage id="homeheader.welcome" />
+                        {userInfo && userInfo.firstName
+                            ? userInfo.firstName
+                            : ""}{" "}
+                        !
+                    </span>
+                    {/* <span
             className={
               language === LANGUAGES.VI ? "language-vi active" : "language-vi"
             }
@@ -63,34 +66,34 @@ class Header extends Component {
             onClick={() => this.handleChangeLanguage(LANGUAGES.EN)}
           >
             EN
-          </span>
-          {/* nút logout */}
-          <div
-            className="btn btn-logout"
-            onClick={processLogout}
-            title="Log out"
-          >
-            <i className="fas fa-sign-out-alt"></i>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          </span> */}
+                    {/* nút logout */}
+                    <div
+                        className="btn btn-logout"
+                        onClick={processLogout}
+                        title="Log out"
+                    >
+                        <i className="fas fa-sign-out-alt"></i>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    isLoggedIn: state.user.isLoggedIn,
-    language: state.app.language,
-    userInfo: state.user.userInfo,
-  };
+    return {
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
+        userInfo: state.user.userInfo,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    processLogout: () => dispatch(actions.processLogout()),
-    changeLanguage: (data) => dispatch(actions.changeLanguage(data)),
-  };
+    return {
+        processLogout: () => dispatch(actions.processLogout()),
+        changeLanguage: (data) => dispatch(actions.changeLanguage(data)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

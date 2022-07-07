@@ -1,17 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { HashLink as HLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./HomeHeader.scss";
-import { FormattedMessage } from "react-intl";
-import { LANGUAGES } from "../../utils/constant";
 import { changeLanguage } from "../../store/actions";
-import { withRouter } from "react-router";
 
 import DetailModal from "./Modal/DetailModal";
 
-const HomeHeader = (props) => {
+const HomeHeader = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     let history = useHistory();
@@ -55,29 +51,29 @@ const HomeHeader = (props) => {
                             <ul>
                                 <li>
                                     <Link className="" to={`/home`}>
-                                        Trang chủ
+                                        Home
                                     </Link>
                                 </li>
                                 <li>
                                     <Link className="" to={`/get-all-product/`}>
-                                        Sản phẩm
+                                        Products
                                     </Link>
                                 </li>
                                 <li>
                                     <Link className="" to={`/get-all-project/`}>
-                                        Dự án
+                                        Projects
                                     </Link>
                                 </li>
                                 <li>
                                     <Link className="" to={`/get-all-posts/`}>
-                                        Tin tức
+                                        News
                                     </Link>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="content-right">
-                            <div onClick={openModal}>Gửi yêu cầu</div>
+                            <div onClick={openModal}>Request a Quote</div>
                         </div>
                     </div>
                 </div>
